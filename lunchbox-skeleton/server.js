@@ -40,8 +40,20 @@ app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index.ejs");
 });
+
+app.post("/orders/new", function(req,res){
+  console.log(req.body.dish);
+  res.render("custConfirm.ejs")
+});
+
+
+
+
+
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
