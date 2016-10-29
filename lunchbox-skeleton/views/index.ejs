@@ -12,27 +12,36 @@
   </head>
 
   <body>
-    <h1>Hello World!</h1>
-    <p> just checking </p>
-    <p> more checking </p>
+    <h1>Lunchbox</h1>
+    <p> Pick your delicious order here!</p>
+    <p>You have a choice of:
 
 
     <form id="dish" method="POST" action="/orders/new">
-      
-    <input type="radio" name="dishes" value="meat"> 
-    <input type="radio" name="dishes" value="meat"> 
-    <input type="radio" name="dishes" value="meat"> 
+    <p>Meat</p>
+    <input type="radio" name="meal_id" value=1>
+    <p>Veggie</p>
+    <input type="radio" name="meal_id" value=2>
+    <p>Gluten Free</p>
+    <input type="radio" name="meal_id" value=3>
 
-    <input type="submit" name="stuff" value="done">
+    <p>Great! Now all you need to do is input your name and phone phone number and we will text you when it is ready to pick up!</p>
 
 
+
+    <input id="phoneNum" type="text" name="phone_num" value="phone number" placeholder ="phonenumber">
+    <p id="phonewarning"></p>
+    <input id="custName" type="text" name="name_cust" value="name"
+    placeholder="type name">
+
+    <input type="submit" name="newOrder" value="done">
 
     </form>
 
 
     </div><br>
-  
-    <div><a href="/">Shorten a url here! I hope. </a></div>
+
+
 
 
   </body>
