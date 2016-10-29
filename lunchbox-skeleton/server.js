@@ -38,16 +38,44 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 
+
+
 // Home page
 app.get("/", (req, res) => {
   console.log("meal");
   res.render("index.ejs");
 });
 
-app.post("/orders/new", function(req,res){
-  console.log(req.body.dish);
-  res.render("custConfirm.ejs")
+
+app.get("/orders/new", function(req,res){
+
+  let templateVars = { pValue: req.body.name };
+
+// res.render("custConfirm.ejs", templateVars);
+res.render("custConfirm.ejs");
+
 });
+
+//////OWNERS ORDER CONFIRM PAGE
+
+app.get("/orders", function(req,res){
+  res.send("orderConfirm.ejs")
+});
+////SENDING INFORMATION TO CUSTOMER CONFIMATION, CUST REDIRECT TO custconfirm
+
+app.post("/orders/new", function(req,res){
+  console.log(req.body);
+  res.render("custConfirm.ejs");
+  // res.json(req.body)
+});
+
+//POSTING INFO TO orderConfirm page
+
+// app.get("/orders/new",function(req,res){
+//   console.log(req.body);
+//   res.render('orderConfirm.ejs')
+// });
+
 
 
 
