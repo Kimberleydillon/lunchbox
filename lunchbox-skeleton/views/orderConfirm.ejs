@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<!-- <%include partials/_header.ejs %> -->
+
   </head>
     <h2>Restaurant</h2>
 
-			<body>
+	<body>
 			<p id="cust"> Here are the orders </p>
 
+	<ul>
+	<% for(var i=0; i<orders.length; i++) {%>
+	   <li>
+	   	<form action="/orders/:id/complete">
+				<%= orders[i].name_cust %>		
+		   	<%= orders[i].phone_num %>		
+		   	<%= orders[i].meal_id %>		
 
-	<form action="/urls/<%=shortURL%>" method="POST">
+		   	<input type="submit" name="" value="complete">
+	   	</form>
+	   	
+	   </li>
 
-	<br>
-	
-	<label for="longURL">updated url</label>
-  <input type="text" name="longURL" id="longURL"><br>
-  <input type="submit" value="Update">
-  
-	</form>
+	<% } %>
+	</ul>
+
+
 
       </body>
 </html>
