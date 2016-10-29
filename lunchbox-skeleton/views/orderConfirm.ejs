@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Restaurant</title>
+  	<!-- <%include partials/_header.ejs %> -->
+  </head>
+    <h2>Restaurant</h2>
 
 			<body>
 			<p> Here are the orders </p>
 
 
+	<form action="/urls/<%=shortURL%>" method="POST">
+
+	<br>
+	
+	<label for="longURL">updated url</label>
+  <input type="text" name="longURL" id="longURL"><br>
+  <input type="submit" value="Update">
+  
+	</form>
+
       </body>
 </html>
+
+
