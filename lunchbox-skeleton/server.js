@@ -42,6 +42,7 @@ app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
+  console.log("meal");
   res.render("index.ejs");
 });
 
