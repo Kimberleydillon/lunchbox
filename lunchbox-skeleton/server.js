@@ -59,7 +59,7 @@ res.render("custConfirm.ejs");
 //////OWNERS ORDER CONFIRM PAGE
 
 app.get("/orders", function(req,res){
-  res.send("orderConfirm.ejs")
+  res.render("orderConfirm.ejs")
 });
 ////SENDING INFORMATION TO CUSTOMER CONFIMATION, CUST REDIRECT TO custconfirm
 
