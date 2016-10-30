@@ -14,6 +14,13 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
+// Twilio Credentials 
+const accountSid = 'AC7011efdc779e50376cf818a70aff0736'; 
+const authToken = '760e6cf8a2c4892843b530c19ad398fe'; 
+   
+  //require the Twilio module and create a REST client 
+const twilio = require('twilio')(accountSid, authToken); 
+
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
@@ -90,12 +97,20 @@ app.post("/orders/new", function(req,res){
 //   res.render('orderConfirm.ejs')
 // });
 
+//endpoint for orders page when click complete
+app.post("/orders/:id/complete", function(req,res){
+  //to do update completion on order status
+
+  twilio.messages.create({ 
+      to: "+12508935747", 
+      from: "+17784001638 ", 
+      body: "This is a test", 
+  }, function(err, message) { 
+      console.log(message); 
+  });
 
 
-
-
-
-
+});
 
 
 app.listen(PORT, () => {
