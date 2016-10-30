@@ -14,6 +14,13 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
+// Twilio Credentials 
+const accountSid = 'AC7011efdc779e50376cf818a70aff0736'; 
+const authToken = '760e6cf8a2c4892843b530c19ad398fe'; 
+   
+  //require the Twilio module and create a REST client 
+const twilio = require('twilio')(accountSid, authToken); 
+
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
@@ -79,6 +86,18 @@ app.get("/orders", function(req,res){
 
 app.post("/orders/new", function(req,res){
   console.log(req.body);
+  var to = req.body.phone_num;
+  var cName = req.body.name_cust;
+
+    twilio.messages.create({ 
+        to: to, 
+        from: "+17784001638 ", 
+        body: "Hi " + cName + ", your order will be ready in 30 minutes!", 
+    }, function(err, message) { 
+        console.log(message); 
+        console.error(err)
+    });
+
   res.render("custConfirm.ejs");
   // res.json(req.body)
 });
@@ -90,12 +109,21 @@ app.post("/orders/new", function(req,res){
 //   res.render('orderConfirm.ejs')
 // });
 
+//endpoint for orders page when click complete
+app.post("/orders/:id/complete", function(req,res){
+  //to be done after database is set up
+  //1) to do update completion on order status
+  //2) to do: get order from database by id in url
+  twilio.messages.create({ 
+      to: "+12508935747", 
+      from: "+17784001638 ", 
+      body: "Your order is ready for pick up", 
+  }, function(err, message) { 
+      console.log(message); 
+  });
 
 
-
-
-
-
+});
 
 
 app.listen(PORT, () => {
