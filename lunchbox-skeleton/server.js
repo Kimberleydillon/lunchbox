@@ -86,6 +86,18 @@ app.get("/orders", function(req,res){
 
 app.post("/orders/new", function(req,res){
   console.log(req.body);
+  var to = req.body.phone_num;
+  var cName = req.body.name_cust;
+
+    twilio.messages.create({ 
+        to: to, 
+        from: "+17784001638 ", 
+        body: "Hi " + cName + ", your order will be ready in 30 minutes!", 
+    }, function(err, message) { 
+        console.log(message); 
+        console.error(err)
+    });
+
   res.render("custConfirm.ejs");
   // res.json(req.body)
 });
@@ -99,12 +111,13 @@ app.post("/orders/new", function(req,res){
 
 //endpoint for orders page when click complete
 app.post("/orders/:id/complete", function(req,res){
-  //to do update completion on order status
-
+  //to be done after database is set up
+  //1) to do update completion on order status
+  //2) to do: get order from database by id in url
   twilio.messages.create({ 
       to: "+12508935747", 
       from: "+17784001638 ", 
-      body: "This is a test", 
+      body: "Your order is ready for pick up", 
   }, function(err, message) { 
       console.log(message); 
   });
