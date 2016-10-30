@@ -2,22 +2,28 @@
 1 verbose cli [ '/home/vagrant/.nvm/versions/node/v6.3.1/bin/node',
 1 verbose cli   '/home/vagrant/.nvm/versions/node/v6.3.1/bin/npm',
 1 verbose cli   'run',
-1 verbose cli   'local' ]
+1 verbose cli   'knex',
+1 verbose cli   'migrate:make',
+1 verbose cli   'lunch_order' ]
 2 info using npm@3.10.3
 3 info using node@v6.3.1
-4 verbose stack Error: ENOENT: no such file or directory, open '/vagrant/package.json'
-4 verbose stack     at Error (native)
-5 verbose cwd /vagrant/lunchbox
+4 verbose stack Error: missing script: knex
+4 verbose stack     at run (/home/vagrant/.nvm/versions/node/v6.3.1/lib/node_modules/npm/lib/run-script.js:151:19)
+4 verbose stack     at /home/vagrant/.nvm/versions/node/v6.3.1/lib/node_modules/npm/lib/run-script.js:61:5
+4 verbose stack     at /home/vagrant/.nvm/versions/node/v6.3.1/lib/node_modules/npm/node_modules/read-package-json/read-json.js:356:5
+4 verbose stack     at checkBinReferences_ (/home/vagrant/.nvm/versions/node/v6.3.1/lib/node_modules/npm/node_modules/read-package-json/read-json.js:320:45)
+4 verbose stack     at final (/home/vagrant/.nvm/versions/node/v6.3.1/lib/node_modules/npm/node_modules/read-package-json/read-json.js:354:3)
+4 verbose stack     at then (/home/vagrant/.nvm/versions/node/v6.3.1/lib/node_modules/npm/node_modules/read-package-json/read-json.js:124:5)
+4 verbose stack     at /home/vagrant/.nvm/versions/node/v6.3.1/lib/node_modules/npm/node_modules/read-package-json/read-json.js:311:12
+4 verbose stack     at /home/vagrant/.nvm/versions/node/v6.3.1/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:78:16
+4 verbose stack     at tryToString (fs.js:455:3)
+4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:442:12)
+5 verbose cwd /vagrant/Lunchbox/lunchbox
 6 error Linux 4.4.0-21-generic
-7 error argv "/home/vagrant/.nvm/versions/node/v6.3.1/bin/node" "/home/vagrant/.nvm/versions/node/v6.3.1/bin/npm" "run" "local"
+7 error argv "/home/vagrant/.nvm/versions/node/v6.3.1/bin/node" "/home/vagrant/.nvm/versions/node/v6.3.1/bin/npm" "run" "knex" "migrate:make" "lunch_order"
 8 error node v6.3.1
 9 error npm  v3.10.3
-10 error path /vagrant/package.json
-11 error code ENOENT
-12 error errno -2
-13 error syscall open
-14 error enoent ENOENT: no such file or directory, open '/vagrant/package.json'
-15 error enoent ENOENT: no such file or directory, open '/vagrant/package.json'
-15 error enoent This is most likely not a problem with npm itself
-15 error enoent and is related to npm not being able to find a file.
-16 verbose exit [ -2, true ]
+10 error missing script: knex
+11 error If you need help, you may report this error at:
+11 error     <https://github.com/npm/npm/issues>
+12 verbose exit [ 1, true ]
