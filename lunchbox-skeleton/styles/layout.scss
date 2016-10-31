@@ -9,10 +9,11 @@ body {
 .common {
 
   text-align: center;
+  font-size: 1.5em;
 }
 
 #jumbo {
-  background-color: #904C77;
+  background-color: #2196F3;
 
 }
 
@@ -25,12 +26,37 @@ body {
 }
 
 .options {
-  background-color: #99EDCC;
+
+
+  text-align: center;
+}
+
+.list {
+  background-color: #90CAF9;
+  margin: 30px;
   border-radius: 7px;
   padding-top: 30px;
   padding-right: 30px;
   padding-bottom: 30px;
   padding-left: 30px;
   text-align: center;
+  font-size: 2em;
 }
 
+#cust {
+  text-align: center;
+  font-size: 2.3em;
+  margin: auto;
+
+}
+
+.wrapper {
+  background-color: #90CAF9;
+  text-align: center;
+   border-radius: 7px;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+
+}
