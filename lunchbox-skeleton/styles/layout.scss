@@ -1,14 +1,15 @@
-body {
-  background-color: #EEE;
+#bodu {
+  background-color: grey;
+}
 
-  h1 {
-    color: #244751;
-  }
+.background {
+  background-color: FFCF99;
 }
 
 .common {
 
   text-align: center;
+  font-size: 1.25em;
 }
 
 #jumbo {
@@ -20,11 +21,20 @@ body {
 }
 
 #jumbo p {
-  color: white
+  color: white;
 }
 
 .options {
-  background-color: #99EDCC;
+  background-color: #FFC07F;
   border-radius: 7px
 }
 
+#name_cust {
+  background: transparent;
+  border: none;
+}
+
+#phone_num {
+  background: transparent;
+  border: none;
+}

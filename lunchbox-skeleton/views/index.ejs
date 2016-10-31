@@ -15,7 +15,7 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
-  <body>
+  <body id="bodu">
    <div class="jumbotron text-center" id="jumbo">
   <h1>LunchBox</h1>
   <p>Get your lunchbox in two steps!</p>
@@ -24,25 +24,25 @@
     <p> Pick your delicious order here!</p>
 
 </div>
-<div class="container">
+<div class="container background">
 <form id="dish" method="POST" action="/orders/new">
   <div class="row">
     <div class="col-sm-3 options">
-      <h3>Meaty-Treaty Box</h3>
+      <h3>Meaty Box</h3>
      <input type="radio" name="meal_id" value=1>
 
     </div>
     <div class="col-sm-1">
     </div>
     <div class="col-sm-3 options">
-      <h3>Top-Veggie Box</h3>
+      <h3>Vegetarian Box</h3>
       <input type="radio" name="meal_id" value=2>
 
     </div>
     <div class="col-sm-1">
     </div>
     <div class="col-sm-3 options">
-      <h3>Sub-Gluten Box</h3>
+      <h3>Non-Gluten Box</h3>
 
     <input type="radio" name="meal_id" value=3>
 
@@ -60,7 +60,7 @@
       <h3>Please input name</h3>
 
     <input id="name_cust" type="text" name="name_cust" value=""
-    placeholder="type name">
+    placeholder="type name here please">
 
     </div>
     <div class="col-sm-1">
@@ -68,7 +68,7 @@
 
     <div class="col-sm-3 options">
       <h3>Phone Number (with +)</h3>
-      <input id="phone_num" type="text" name="phone_num" value="+" placeholder ="phone# (leave + please!)">
+      <input id="phone_num" type="text" name="phone_num" value="" placeholder ="phone# (with a + please!)">
 
     </div>
     <div class="col-sm-1">
@@ -76,14 +76,14 @@
 
     <div class="col-sm-3 options">
       <h3>Looks Good?</h3>
-      <input type="submit" name="newOrder" value="submit" id="submit">
+      <input type="submit" name="newOrder" value="click to confirm" id="submit">
 
 
     </div>
 
   </div>
 
-
+</div>
 
 
 
