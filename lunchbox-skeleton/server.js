@@ -78,19 +78,8 @@ res.render("orderConfirm.ejs", { orders: orders });
   console.error(error);
 });
 
-  //to do - GET orders from database
-  // var orders = [
-  //   {
-  //     name_cust: "linley",
-  //     phone_num: "+2508935747",
-  //     meal_id: "meat"
-  //   },
-  //   {
-  //     name_cust: "Nick",
-  //     phone_num: "+2509208221",
-  //     meal_id: "veggie"
-  //   }
-  // ]
+}
+
 
 
 });
@@ -125,24 +114,16 @@ app.post("/orders/new", function(req,res){
 });
 
 
-  // res.json(req.body)
+
 });
 
-//POSTING INFO TO orderConfirm page
 
-// app.get("/orders/new",function(req,res){
-//   console.log(req.body);
-//   res.render('orderConfirm.ejs')
-// });
-
-//endpoint for orders page when click complete
 app.post("/orders/:id/complete", function(req,res){
 
   knex('lunch-order')
   .first('phone_num')
   .where({"order_id":req.params.id})
   .then(function(phonenumber){
-    console.log(phonenumber.phone_num);
     twilio.messages.create({
       to: phonenumber.phone_num,
       from: "+17784001638",
@@ -162,7 +143,7 @@ app.post("/orders/:id/complete", function(req,res){
       res.redirect('/orders');
     })
     .catch(function(error) {
-  console.error(error);
+  console.error(error);// res.render view with error variable.
 });
 
 });
