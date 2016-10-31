@@ -14,12 +14,12 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
-// Twilio Credentials 
-const accountSid = 'AC7011efdc779e50376cf818a70aff0736'; 
-const authToken = '760e6cf8a2c4892843b530c19ad398fe'; 
-   
-  //require the Twilio module and create a REST client 
-const twilio = require('twilio')(accountSid, authToken); 
+// Twilio Credentials
+const accountSid = 'AC7011efdc779e50376cf818a70aff0736';
+const authToken = '760e6cf8a2c4892843b530c19ad398fe';
+
+  //require the Twilio module and create a REST client
+const twilio = require('twilio')(accountSid, authToken);
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -65,21 +65,34 @@ res.render("custConfirm.ejs");
 //////OWNERS ORDER CONFIRM PAGE
 
 app.get("/orders", function(req,res){
-  //to do - GET orders from database 
-  var orders = [
-    {
-      name_cust: "linley", 
-      phone_num: "+2508935747", 
-      meal_id: "meat"
-    },
-    {
-      name_cust: "Nick", 
-      phone_num: "+2509208221", 
-      meal_id: "veggie"
-    }
-  ]
+knex('lunch-order')
+.join('meal', 'lunch-order.meal_id','=','meal.meal_id')
+.select('lunch-order.name_cust','lunch-order.order_id', 'lunch-order.phone_num ','meal.meal_name')
+.where('lunch-order.completion', false)
+.then(function(orders){
+console.log(orders);
+res.render("orderConfirm.ejs", { orders: orders });
 
-  res.render("orderConfirm.ejs", { orders: orders })
+
+}).catch(function(error) {
+  console.error(error);
+});
+
+  //to do - GET orders from database
+  // var orders = [
+  //   {
+  //     name_cust: "linley",
+  //     phone_num: "+2508935747",
+  //     meal_id: "meat"
+  //   },
+  //   {
+  //     name_cust: "Nick",
+  //     phone_num: "+2509208221",
+  //     meal_id: "veggie"
+  //   }
+  // ]
+
+
 });
 ////SENDING INFORMATION TO CUSTOMER CONFIMATION, CUST REDIRECT TO custconfirm
 
@@ -90,23 +103,28 @@ app.post("/orders/new", function(req,res){
   var cName = req.body.name_cust;
   var mealID = req.body.meal_id;
 
-    twilio.messages.create({ 
-        to: to, 
-        from: "+17784001638 ", 
-        body: "Hi " + cName + ", your order will be ready in 30 minutes!", 
-    }, function(err, message) { 
-        console.log(message); 
+    twilio.messages.create({
+        to: to,
+        from: "+17784001638 ",
+        body: "Hi " + cName + ", your order will be ready in 30 minutes!",
+    }, function(err, message) {
+        console.log(message);
         console.error(err)
     });
 
-  knex('order_lunch').insert({
+  knex('lunch-order').insert({
     name_cust: cName,
     phone_num: to,
     meal_id: mealID,
     completion: false,
-  })
+  }).then(function(lunchbox){
+    console.log(lunchbox);
+    res.render("custConfirm.ejs");
+  }).catch(function(error) {
+  console.error(error);
+});
 
-  res.render("custConfirm.ejs");
+
   // res.json(req.body)
 });
 
@@ -119,21 +137,35 @@ app.post("/orders/new", function(req,res){
 
 //endpoint for orders page when click complete
 app.post("/orders/:id/complete", function(req,res){
-  //to be done after database is set up
-  //1) to do update completion on order status
-  //2) to do: get order from database by id in url
-  twilio.messages.create({ 
-      to: "+12508935747", 
-      from: "+17784001638 ", 
-      body: "Your order is ready for pick up", 
-  }, function(err, message) { 
-      console.log(message); 
+
+  knex('lunch-order')
+  .first('phone_num')
+  .where({"order_id":req.params.id})
+  .then(function(phonenumber){
+    console.log(phonenumber.phone_num);
+    twilio.messages.create({
+      to: phonenumber.phone_num,
+      from: "+17784001638",
+      body: "Your order is ready for pick up",
+  }, function(err, message) {
+     console.log(message);
   });
 
-
+  }).catch(function(error) {
+  console.error(error);
+});
+  knex('lunch-order')
+  .where('order_id', '=', req.params.id)
+    .update({
+      completion: true,
+    }).then(function(){
+      res.redirect('/orders');
+    })
+    .catch(function(error) {
+  console.error(error);
 });
 
-
+});
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
