@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.droptable('meal');
+  return knex.schema.dropTable('meal');
 };
 
 
