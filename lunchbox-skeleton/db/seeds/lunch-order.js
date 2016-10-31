@@ -6,7 +6,6 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         // Inserts seed entries
         knex('lunch-order').insert({
-          order_id:1,
           name_cust: 'Bob',
           phone_num:'2508854259',
           completion: false,

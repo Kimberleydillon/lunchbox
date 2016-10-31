@@ -19,10 +19,10 @@
 	<ul>
 	<% for(var i=0; i<orders.length; i++) {%>
 	   <li class="list">
-	   	<form action="/orders/:id/complete" method="POST">
+	   	<form action="/orders/<%= orders[i].order_id %>/complete" method="POST">
 				<%= orders[i].name_cust %>
 		   	<%= orders[i].phone_num %>
-		   	<%= orders[i].meal_id %>
+		   	<%= orders[i].meal_name %>
 
 		   	<input type="submit" name="" value="complete">
 	   	</form>
