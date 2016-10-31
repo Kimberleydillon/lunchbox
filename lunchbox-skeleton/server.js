@@ -78,7 +78,7 @@ res.render("orderConfirm.ejs", { orders: orders });
   console.error(error);
 });
 
-}
+
 
 
 
