@@ -46,7 +46,6 @@ app.use(express.static("public"));
 app.use("/api/users", usersRoutes(knex));
 
 
-
 // Home page
 app.get("/", (req, res) => {
   console.log("meal");
@@ -86,8 +85,10 @@ app.get("/orders", function(req,res){
 
 app.post("/orders/new", function(req,res){
   console.log(req.body);
+
   var to = req.body.phone_num;
   var cName = req.body.name_cust;
+  var mealID = req.body.meal_id;
 
     twilio.messages.create({ 
         to: to, 
@@ -97,6 +98,13 @@ app.post("/orders/new", function(req,res){
         console.log(message); 
         console.error(err)
     });
+
+  knex('order_lunch').insert({
+    name_cust: cName,
+    phone_num: to,
+    meal_id: mealID,
+    completion: false,
+  })
 
   res.render("custConfirm.ejs");
   // res.json(req.body)
