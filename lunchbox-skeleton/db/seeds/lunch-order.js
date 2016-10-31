@@ -9,7 +9,7 @@ exports.seed = function(knex, Promise) {
           order_id:1,
           name_cust: 'Bob',
          phone_number:'2508854259',
-         completion: FALSE,
+         completion: false,
          meal_id: 3}),
 
       ]);
