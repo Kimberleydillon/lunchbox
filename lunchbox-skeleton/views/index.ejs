@@ -6,45 +6,116 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-    <h1>Lunchbox</h1>
-
+   <div class="jumbotron text-center" id="jumbo">
+  <h1>LunchBox</h1>
+  <p>Get your lunchbox in two steps!</p>
+</div>
+<div class="common">
     <p> Pick your delicious order here!</p>
-    <p>You have a choice of:
+
+</div>
+<div class="container">
+<form id="dish" method="POST" action="/orders/new">
+  <div class="row">
+    <div class="col-sm-3 options">
+      <h3>Meaty-Treaty Box</h3>
+     <input type="radio" name="meal_id" value=1>
+
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-3 options">
+      <h3>Top-Veggie Box</h3>
+      <input type="radio" name="meal_id" value=2>
+
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-3 options">
+      <h3>Sub-Gluten Box</h3>
+
+    <input type="radio" name="meal_id" value=3>
+
+    </div>
+  </div>
+  <div class="common">
+    <br>
+    <p>Great! Now all you need to do is input your name and phone phone number and we will text you when it is ready to pick up!</p>
+
+    <br>
+    </div>
+
+<div class="row">
+    <div class="col-sm-3 options">
+      <h3>Please input name</h3>
+
+    <input id="name_cust" type="text" name="name_cust" value=""
+    placeholder="type name">
+
+    </div>
+    <div class="col-sm-1">
+    </div>
+
+    <div class="col-sm-3 options">
+      <h3>Phone Number (with +)</h3>
+      <input id="phone_num" type="text" name="phone_num" value="+" placeholder ="phone# (leave + please!)">
+
+    </div>
+    <div class="col-sm-1">
+    </div>
+
+    <div class="col-sm-3 options">
+      <h3>Looks Good?</h3>
+      <input type="submit" name="newOrder" value="submit" id="submit">
 
 
-    <form id="dish" method="POST" action="/orders/new">
+    </div>
+
+  </div>
+
+
+
+
+
+
+    <!-- <form id="dish" method="POST" action="/orders/new">
     <p>Meat</p>
     <input type="radio" name="meal_id" value=1>
     <p>Veggie</p>
     <input type="radio" name="meal_id" value=2>
     <p>Gluten Free</p>
     <input type="radio" name="meal_id" value=3>
-
-
+ -->
+ <!--    <div>
     <p>Great! Now all you need to do is input your name and phone phone number and we will text you when it is ready to pick up!</p>
 
     <br>
+    </div>
 
-    <p id="phonewarning"></p>
-
-    <input id="name_cust" type="text" name="name_cust" value="name"
+    <input id="name_cust" type="text" name="name_cust" value=""
     placeholder="type name">
-    
-    <input id="phone_num" type="text" name="phone_num" value="phone number" placeholder ="phonenumber">
-    
-    <input type="submit" name="newOrder" value="submit">
+
+    <input id="phone_num" type="text" name="phone_num" value="+" placeholder ="phone# (leave + please!)">
+
+    <input type="submit" name="newOrder" value="submit" id="submit"> -->
 
 
     </form>
 
 
-    </div><br>
+
+
+
 
 
 

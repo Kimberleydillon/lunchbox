@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
+      <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
-    <h2>Restaurant</h2>
+
 
 	<body>
+    <div class="jumbotron text-center" id="jumbo">
+      <h1>LunchBox</h1>
+      <p>Get your lunchbox in two steps!</p>
+  </div>
 			<p id="cust"> Here are the orders </p>
 
 	<ul>
 	<% for(var i=0; i<orders.length; i++) {%>
-	   <li>
+	   <li class="list">
 	   	<form action="/orders/:id/complete" method="POST">
-				<%= orders[i].name_cust %>		
-		   	<%= orders[i].phone_num %>		
-		   	<%= orders[i].meal_id %>		
+				<%= orders[i].name_cust %>
+		   	<%= orders[i].phone_num %>
+		   	<%= orders[i].meal_id %>
 
 		   	<input type="submit" name="" value="complete">
 	   	</form>
-	   	
+
 	   </li>
 
 	<% } %>
