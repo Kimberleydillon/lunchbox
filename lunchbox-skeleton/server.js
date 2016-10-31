@@ -88,9 +88,9 @@ res.render("orderConfirm.ejs", { orders: orders });
 app.post("/orders/new", function(req,res){
   console.log(req.body);
 
-  var to = req.body.phone_num;
-  var cName = req.body.name_cust;
-  var mealID = req.body.meal_id;
+  const to = req.body.phone_num;
+  const cName = req.body.name_cust;
+  const mealID = req.body.meal_id;
 
     twilio.messages.create({
         to: to,
