@@ -1,12 +1,21 @@
 $(() => {
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
-  });;
+  // $.ajax({
+  //   method: "GET",
+  //   url: "/api/users"
+  // }).done((users) => {
+  //   for(user of users) {
+  //     $("<div>").text(user.name).appendTo($("body"));
+  //   }
+  // });;
+  $('#title').on('click', function() {
+  	var deg = 0;
+  	setInterval(() => {
+  		$(this).css({'transform' : 'rotate(' + deg +'deg)'});
+  		deg++;
+  		deg++;
+  	}, 12);
+  });
+
 });
 
 
