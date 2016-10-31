@@ -26,12 +26,8 @@ body {
 }
 
 .options {
-  background-color: #90CAF9;
-  border-radius: 7px;
-  padding-top: 30px;
-  padding-right: 30px;
-  padding-bottom: 30px;
-  padding-left: 30px;
+
+
   text-align: center;
 }
 
@@ -51,5 +47,16 @@ body {
   text-align: center;
   font-size: 2.3em;
   margin: auto;
+
+}
+
+.wrapper {
+  background-color: #90CAF9;
+  text-align: center;
+   border-radius: 7px;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
 
 }
